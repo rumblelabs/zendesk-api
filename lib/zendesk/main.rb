@@ -8,7 +8,7 @@ module Zendesk
       @username = username
       @password = password
       @options = options
-      @option[:domain] ||= ".zendesk.com/" # default to the current endpoint.
+      @options[:domain] ||= ".zendesk.com/" # default to the current endpoint.
       if options[:format] && ['xml', 'json'].any?{|f| f == options[:format]}
         @format = options[:format]
       else
