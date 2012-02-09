@@ -60,7 +60,9 @@ module Zendesk
       
       curl.headers={}
       curl.headers.merge!({"X-On-Behalf-Of" => options[:on_behalf_of]}) if options[:on_behalf_of].present?
-      
+      curl.ssl_verify_host = options[:ssl_verify_host] if options[:ssl_verify_host].present?
+      curl.ssl_verify_peer = options[:ssl_verify_peer] if options[:ssl_verify_peer].present?
+
       if body.empty? or body[:list]
         curl.url = curl.url + params_list(body[:list]) if body[:list]
         curl.perform
