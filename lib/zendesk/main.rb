@@ -55,6 +55,7 @@ module Zendesk
       options.reverse_merge!({:on_behalf_of => nil})
       
       curl = Curl::Easy.new(main_url + end_url + ".#{@format}")
+      curl.resolve_mode = :ipv4
       curl.userpwd = "#{@username}:#{@password}"
       
       curl.headers={}
